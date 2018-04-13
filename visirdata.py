@@ -8,6 +8,16 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plot
 import operator
 
+def rm_adm_ips(log_file, filtered_log):
+    adm_ips = ["85.86.42.197", "91.200.118.92"]
+    with open(log_file, "r") as fd:
+        with open("apache_filter.log", "w") as od:
+            lines = fd.readlines()
+            for line in lines:
+                for ip in adm_ips:
+                    if not any(ip in line for ip in adm_ips):
+                        od.write(line)                    
+
 def make_autopct(values):
     def my_autopct(pct):
         total = sum(values)
@@ -131,8 +141,12 @@ def main():
     ip_country = {}
     country_count = {}
     log_file = sys.argv[1]
+    filtered_log = "apache_filter.log"
+    log_type = "default"
 
-    with open(log_file, "r") as fd:
+    rm_adm_ips(log_file, filtered_log)
+
+    with open(filtered_log, "r") as fd:
         line = fd.readline()
         match = re.search(r'\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3} - - ', line)
         if match:
@@ -141,7 +155,7 @@ def main():
         if match:
             log_type = "ssh"
 
-    with open(log_file, "r") as fd:
+    with open(filtered_log, "r") as fd:
         lines = fd.readlines()
         for line in lines:
             nlines += 1
