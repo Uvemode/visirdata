@@ -9,7 +9,7 @@ import matplotlib.pyplot as plot
 import operator
 
 def rm_adm_ips(log_file, filtered_log):
-    adm_ips = ["85.86.42.197", "91.200.118.92"]
+    adm_ips = []
     with open(log_file, "r") as fd:
         with open("apache_filter.log", "w") as od:
             lines = fd.readlines()
