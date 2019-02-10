@@ -78,7 +78,7 @@ def fill_ipcountry_data(ip, ip_count, ip_country):
     else:
         ip_count[ip] += 1
     if ip not in ip_country:
-        url = "http://freegeoip.net/json/" + ip
+        url = "http://freegeoip.app/json/" + ip
         res = requests.get(url)
         content = res.content.decode("utf8")
         json_res = json.loads(content)
