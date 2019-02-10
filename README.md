@@ -6,3 +6,11 @@ It also filters the IP addresses of your choice out of the output image, just in
 You can also use the "script" (like 4 lines...) merge_logs.sh to merge apache logs in one file called apache.log.
 
 Usage: visirdata.py [logfile]
+
+
+
+
+
+
+![apachecountry](https://user-images.githubusercontent.com/18345040/52536062-299b6d00-2d56-11e9-8452-a40bdb3d21ad.png)
+![sshusers](https://user-images.githubusercontent.com/18345040/52536085-4cc61c80-2d56-11e9-8fc9-0f01aace7443.png)
